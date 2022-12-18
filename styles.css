@@ -1,0 +1,275 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  font-family: "Poppins";
+}
+
+@media (min-width: 600px) {
+  body {
+    margin: 2rem;
+  }
+}
+
+button {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 270px;
+  background: black;
+  color: #f9f9f9;
+  font-family: "Poppins";
+  box-sizing: border-box;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 2rem;
+  }
+}
+
+.navbar-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+body.open .navbar-overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-overlay {
+    display: none;
+  }
+}
+
+.navbar-burger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-burger {
+    display: none;
+  }
+}
+
+.navbar-title {
+  margin: 0;
+  font-size: clamp(3rem, 5vmin, 6rem);
+}
+
+.navbar-menu {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  translate: -100% 0;
+  width: 270px;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  gap: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #000000;
+  visibility: hidden;
+  transition: translate 0.3s;
+}
+
+body.open .navbar-menu {
+  translate: 0 0;
+  visibility: visible;
+}
+
+@media only screen and (min-width: 600px) {
+  .navbar-menu {
+    position: static;
+    translate: 0 0;
+    width: auto;
+    background: transparent;
+    flex-direction: row;
+    visibility: visible;
+  }
+}
+
+.navbar-menu > button {
+  color: rgba(255, 255, 255, 0.5);
+  background: transparent;
+  padding: 0 8px;
+}
+
+.navbar-menu > button.active {
+  color: inherit;
+}
+
+.nav-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-col-1 button {
+  text-align: right;
+}
+
+body.open .nav-col-1 button {
+  text-align: left;
+}
+
+.nav-col-2 button {
+  text-align: left;
+}
+
+.nav-col button {
+  font-size: clamp(1rem, 3vmin, 3rem);
+}
+
+.container-main-content {
+  margin-top: 270px;
+  padding: 1rem;
+  gap: 4rem;
+  display: grid;
+  grid-template-areas:
+    "box1 box1"
+    "box2 box2"
+    "box3 box3"
+    "box4 box4"
+    "box5 box5"
+    "box6 box6";
+}
+
+.box {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#box1 {
+  grid-area: box1;
+}
+
+#box2 {
+  grid-area: box2;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+#box3 {
+  grid-area: box3;
+  font-size: 3rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+#box4 {
+  grid-area: box4;
+}
+
+#box4 img {
+  max-width: 90vw;
+  align-items: center;
+  justify-content: center;
+}
+
+#box5 {
+  grid-area: box5;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+#box6 {
+  grid-area: box6;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+@media (min-width: 600px) {
+  .container-main-content {
+    margin-top: 270px;
+    padding: 10rem 5rem 5rem 5rem;
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      "box1 box1 box2 box2"
+      "box3 box3 box3 box3"
+      "box4 box4 box5 box6";
+  }
+
+  .box {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  #box1 {
+    grid-area: box1;
+    font-size: clamp(1rem, 3vmin, 6rem);
+  }
+
+  #box2 {
+    grid-area: box2;
+    font-size: clamp(1rem, 3vmin, 6rem);
+    color: rgba(255, 255, 255, 1);
+    text-align: right;
+  }
+
+  #box3 {
+    grid-area: box3;
+    font-size: clamp(4rem, 5vmin, 6rem);
+    color: rgba(255, 255, 255, 1);
+  }
+
+  #box4 {
+    grid-area: box4;
+  }
+
+  #box4 img {
+    max-height: 50vw;
+  }
+
+  #box5 {
+    grid-area: box5;
+    line-height: 1.5;
+    text-align: justify;
+    font-size: clamp(1rem, 2vmin, 6rem);
+  }
+
+  #box6 {
+    grid-area: box6;
+    line-height: 1.5;
+    text-align: justify;
+    font-size: clamp(1rem, 2vmin, 6rem);
+  }
+}
